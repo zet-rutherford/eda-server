@@ -1,0 +1,15 @@
+{
+  "weights": {
+    "functionality": 1.0,
+    "area": 0.0,
+    "performance": 0.0,
+    "power": 0.0
+  },
+  "targets": {
+    "func_threshold": 0.70,
+    "overall_threshold": 0.70,
+    "ratio_cap": 2.0,
+    "area_target_um2": 0.0,
+    "perf_target_ips": 0.0
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "title": "CoralNPU RTL Bug Fix",
+  "description": "Debug and fix bugs in the CoralNPU RISC-V vector processor RTL. The buggy design fails certain vector instruction sequences. Miners must identify and fix the issues to achieve the target functionality score.",
+  "difficulty": "medium",
+  "estimated_time_hours": 168,
+  "evaluation_metrics": {
+    "functionality": 1.0,
+    "area": 0.0,
+    "delay": 0.0,
+    "power": 0.0
+  },
+  "scoring_details": {
+    "functionality_description": "Functionality score must be at least 70% to pass. The unmodified reference design scores ~31%.",
+    "area_baseline_gates": "N/A - Bug fix challenge, no area evaluation",
+    "delay_target_ns": "N/A - Bug fix challenge, no timing evaluation",
+    "power_budget_mw": "N/A - Bug fix challenge, no power evaluation"
+  },
+  "submission_requirements": {
+    "file_format": "systemverilog/verilog",
+    "top_module_name": "RvvCoreMiniVerificationAxi",
+    "filelist_name": "rtl.f",
+    "max_file_size_kb": 50000,
+    "coding_style": "synthesizable_verilog_2005"
+  },
+  "challenge_files": [
+    "CHALLENGE_INFO.md",
+    "miner_evaluator.zip"
+  ],
+  "bonus_objectives": [],
+  "created_by": "ChipForge-SN84",
+  "created_date": "2026-03-06",
+  "version": "2.0"
+}

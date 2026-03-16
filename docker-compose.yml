@@ -10,8 +10,9 @@ services:
       - "8001:8001"
     volumes:
       - ./shared:/shared
-      - /tmp:/tmp
-      - ./results:/app/results                # unified results path
+      - ./results:/app/results
+    tmpfs:
+      - /tmp
     environment:
       - SERVICE_NAME=verilator-simulation
     healthcheck:
@@ -30,19 +31,15 @@ services:
       - "8003:8003"
     volumes:
       - ./shared:/shared
-      - ./results:/app/results                # unified results path
-      # Optional for local debug (not required if using POST /run_openlane):
-      # - ./test_designs/rv32i:/openlane/designs/rv32i
+      - ./results:/app/results
+    tmpfs:
+      - /tmp
     environment:
       - SERVICE_NAME=openlane-implementation
       - PDK_ROOT=/openlane/pdks
       - PDK=sky130A
       - STD_CELL_LIBRARY=sky130_fd_sc_hd
       - PDKPATH=/openlane/pdks/sky130A
-    # Remove these unless you truly run docker-in-docker:
-    # privileged: true
-    # volumes:
-    #   - /var/run/docker.sock:/var/run/docker.sock
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8003/health"]
       interval: 300s
@@ -61,19 +58,10 @@ services:
       - verilator-api
       - openlane-api
     volumes:
-      - ./results:/app/results                # unified results path
+      - ./results:/app/results
       - ./shared:/shared
-      - /tmp:/tmp
+    tmpfs:
+      - /tmp
     environment:
       - VERILATOR_URL=http://verilator-api:8001
       - OPENLANE_URL=http://openlane-api:8003
-      # EDA_API_KEY comes from .env
-
-# Named volumes not needed if you standardize on ./results (remove clutter)
-# volumes:
-#   openlane_designs:
-#     driver: local
-#   openlane_runs:
-#     driver: local
-#   openlane_results:
-#     driver: local
