@@ -13,6 +13,7 @@ services:
       - ./results:/app/results
     tmpfs:
       - /tmp
+      - ./results:/app/results                # unified results path
     environment:
       - SERVICE_NAME=verilator-simulation
     healthcheck:
@@ -60,8 +61,11 @@ services:
     volumes:
       - ./results:/app/results
       - ./shared:/shared
+<<<<<<< HEAD
     tmpfs:
       - /tmp
+=======
+>>>>>>> upstream/main
     environment:
       - VERILATOR_URL=http://verilator-api:8001
       - OPENLANE_URL=http://openlane-api:8003
